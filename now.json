@@ -1,0 +1,11 @@
+{
+  "name": "grouper-bot",
+  "alias": "grouper-bot.now.sh",
+  "version": 1,
+  "env": {
+    "CLIENT_ID": "@gb-client-id",
+    "CLIENT_SECRET": "@gb-client-secret",
+    "PORT": "3000",
+    "MONGO_URI": "@gb-mongo"
+  }
+}

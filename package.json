@@ -20,7 +20,7 @@
     "nodejs"
   ],
   "author": "Andrew D. Murray",
-  "license": "MIT",
+  "license": "BSD 2-Clause",
   "bugs": {
     "url": "https://github.com/andrewmurraydavid/grouper-bot/issues"
   },
@@ -39,6 +39,5 @@
   "engines": {
     "node": "^8.11.4",
     "npm": "^6.4.1"
-  },
-  "envVars": {}
+  }
 }

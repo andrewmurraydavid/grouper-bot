@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon",
     "start": "node index.js",
+    "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,7 +21,7 @@
     "nodejs"
   ],
   "author": "Andrew D. Murray",
-  "license": "BSD 2-Clause",
+  "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/andrewmurraydavid/grouper-bot/issues"
   },
@@ -34,10 +35,16 @@
     "request-promise": "^4.2.2"
   },
   "devDependencies": {
-    "eslint": "^5.9.0"
+    "eslint": "^5.9.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.15.3"
   },
   "engines": {
     "node": "^8.11.4",
     "npm": "^6.4.1"
-  }
+  },
+  "pre-commit": [
+    "lint"
+  ]
 }

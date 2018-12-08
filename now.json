@@ -10,7 +10,7 @@
   "scale": {
     "sfo": {
       "min": 2,
-      "max": 5
+      "max": 3
     }
   },
   "alias": "grouper-bot.now.sh"

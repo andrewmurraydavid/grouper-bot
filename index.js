@@ -1,20 +1,20 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const constants = require('./config/constants');
+import { PORT } from "./config/constants";
 
-const request = require('request-promise');
+import request from "request-promise";
 
-const DS = require('./server/bot-executions/deliver');
+import DS from "./server/bot-executions/deliver";
 const DeliverySystem = new DS();
 
-const express = require('express');
-const bodyParser = require('body-parser');
+import express from "express";
+import { json, urlencoded } from "body-parser";
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
-app.post('/get_message', (req, res) => {
-  if (Object.keys(req.body).includes('challenge')) {
+app.use(json());
+app.use(urlencoded());
+app.post("/get_message", (req, res) => {
+  if (Object.keys(req.body).includes("challenge")) {
     res.send(req.body.challenge);
     return;
   }
@@ -23,19 +23,19 @@ app.post('/get_message', (req, res) => {
   res.sendStatus(202);
 });
 
-app.use('/oauth', async (req, res) => {
+app.use("/oauth", async (req, res) => {
   const code = req.query.code;
   const oauth_res = await request({
-    method: 'POST',
-    url: 'https://slack.com/api/oauth.access',
+    method: "POST",
+    url: "https://slack.com/api/oauth.access",
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
+      "Content-Type": "application/x-www-form-urlencoded",
     },
     form: {
       client_id: process.env.CLIENT_ID,
       client_secret: process.env.CLIENT_SECRET,
-      code
-    }
+      code,
+    },
   });
   const oauth = JSON.parse(oauth_res);
   if (oauth.error !== undefined) {
@@ -46,6 +46,6 @@ app.use('/oauth', async (req, res) => {
   res.redirect(`https://slack.com/messages/${oauth.incoming_webhook.channel}`);
 });
 
-app.listen(constants.PORT, () => {
-  console.log(`Server started on port ${constants.PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
 });

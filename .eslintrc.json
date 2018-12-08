@@ -1,15 +1,22 @@
 {
+  "plugins": ["prettier"],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": "eslint:recommended",
   "parserOptions": {
     "ecmaVersion": 2017,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true,
-      "js": true
-    }
+    "sourceType": "module"
   },
   "rules": {
-    "semi": 2,
-    "no-trailing-spaces": 2,
-    "comma-dangle": 2
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"],
+    "prettier/prettier": "error",
+    "no-console": "warn",
+    "no-unused-vars": "warn"
   }
 }
